@@ -13,12 +13,12 @@ public class HelloService {
 
     @HystrixCommand(fallbackMethod = "hiError")
     public String hiService(String name){
-        String forObject = restTemplate.getForObject("http://eureka-client/hello?name="+name, String.class);
+        String forObject = restTemplate.getForObject("http://eureka-client/hello?name="+name+"-ribbon", String.class);
         return forObject;
     }
 
 
     public String hiError(String name){
-        return "hi，"+name + ",sorry,error!";
+        return "hi，"+name + "-ribbon,sorry,error!";
     }
 }
