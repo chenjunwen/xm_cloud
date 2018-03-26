@@ -1,0 +1,25 @@
+server:
+  port: 9531
+
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/cjw.net/SpringCloudConfig/
+          # 目录
+          search-paths: /
+#          username: ****
+#          password: ****
+      label: master
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9527/eureka
+
+
+

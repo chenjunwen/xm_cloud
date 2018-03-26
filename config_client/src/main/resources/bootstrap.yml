@@ -1,0 +1,23 @@
+#### ⚠注意 该文件名称一定要是bootstrap  https://blog.csdn.net/u012076316/article/details/53323138
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      label: master
+      profile: dev
+      # 不走注册中心从配置服务端读取配置文件
+      #uri: http://localhost:9531/
+      discovery:
+        service-id: config-server
+        # 是否从配置中心读取文件
+        enabled: true
+
+server:
+  port: 9532
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9527/eureka

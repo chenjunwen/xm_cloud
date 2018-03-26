@@ -13,6 +13,10 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableHystrix
+/**
+ * 断路由监控页面
+ * http://localhost:9529/hystrix
+ */
 @EnableHystrixDashboard
 public class ServiceRibbonApplication {
 

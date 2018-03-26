@@ -17,6 +17,9 @@ zuul:
     api-b:
       path: /api-b/**
       serviceId: service-feign
+    api-config:
+      path: /api-config/**
+      serviceId: config-client
 
 
 
