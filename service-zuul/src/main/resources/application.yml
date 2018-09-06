@@ -1,4 +1,6 @@
 eureka:
+  instance:
+    status-page-url-path: /
   client:
     service-url:
       defaultZone: http://localhost:9527/eureka
@@ -11,15 +13,49 @@ spring:
 
 zuul:
   routes:
-    api-ribbon:
-      path: /api-a/**
-      serviceId: service-ribbon
-    api-b:
-      path: /api-b/**
+#    service-ribbon:
+#      path: /ribbon/**
+#      serviceId: service-ribbon
+    #和上面的是一样的
+    service-ribbon: /ribbon/**
+    service-feign:
+      path: /feign/**
       serviceId: service-feign
-    api-config:
-      path: /api-config/**
+      # 关闭某一个服务的重试机制
+      # retryable: false
+    eureka-client:
+      path: /eurekaClient/**
+      serviceId: eureka-client
+    config-client:
+      path: /configClient/**
       serviceId: config-client
+  prefix: /api
+  # 表示API网关在进行请求路由转发前为请求设置Host头信息,不暴露真实的服务地址
+  #add-host-header: true
+  host:
+    socket-timeout-millis: 60000
+#    max-total-connections: 1000
+#    max-per-route-connections: 1000
+# 最影响并发的参数
+  semaphore:
+    max-semaphores: 2000
+  # 过滤头部信息
+  sensitive-headers:
+#  host:
+#    max-total-connections: 200
+#    connect-timeout-millis: 2000
+  # 关闭全局重试机制
+  #retryable: false
 
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000  #设置API网关中路由转发请求的HystrixCommand执行超时时间
 
+ribbon:
+  ConnectTimeout: 300000 #设置路由转发请求的时候，创建请求连接的超时时间
+  ReadTimeout: 600000  #用来设置路由转发请求的超时时间
 

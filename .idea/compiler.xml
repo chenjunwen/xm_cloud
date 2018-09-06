@@ -21,13 +21,10 @@
       <module name="config_server" target="1.8" />
       <module name="eureka_client" target="1.8" />
       <module name="eureka_server" target="1.8" />
-      <module name="eureka_server_main" target="1.8" />
-      <module name="eureka_server_test" target="1.8" />
-      <module name="service-ribbon" target="1.8" />
       <module name="service-zuul" target="1.8" />
       <module name="service_feign" target="1.8" />
       <module name="service_ribbon" target="1.8" />
-      <module name="xm_cloud" target="1.5" />
+      <module name="xm_cloud" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

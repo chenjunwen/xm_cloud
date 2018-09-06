@@ -15,4 +15,10 @@ public class HelloController {
         String msg = helloService.hiService(name);
         return msg;
     }
+
+
+    @GetMapping("/")
+    public String index(){
+        return "service_ribbon------------>>>";
+    }
 }

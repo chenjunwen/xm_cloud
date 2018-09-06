@@ -16,4 +16,11 @@ public class HelloController {
         String s = helloService.helloFeign(name + "-feign");
         return s;
     }
+
+    @GetMapping("/")
+    public String index(String name){
+        return "service-----------feign";
+    }
+
+
 }

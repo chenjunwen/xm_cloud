@@ -4,9 +4,28 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>groupId</groupId>
+    <groupId>com.xm</groupId>
     <artifactId>xm_cloud</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <description>项目云</description>
 
-    
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.4.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <!--<modules>-->
+        <!--<module>config_server</module>-->
+        <!--<module>config_client</module>-->
+        <!--<module>service-zuul</module>-->
+        <!--<module>service_feign</module>-->
+        <!--<module>service_ribbon</module>-->
+        <!--<module>eureka_server</module>-->
+        <!--<module>eureka_client</module>-->
+    <!--</modules>-->
+
+
+
 </project>

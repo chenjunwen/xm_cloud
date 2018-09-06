@@ -23,4 +23,9 @@ public class ConfigClientApplication {
 	public String hi(){
 		return  "获取到的配置文件内容："+foo;
 	}
+
+	@GetMapping("/")
+	public String index(){
+		return  "configClient-------"+foo;
+	}
 }
