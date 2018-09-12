@@ -1,18 +1,25 @@
 #### ⚠注意 该文件名称一定要是bootstrap  https://blog.csdn.net/u012076316/article/details/53323138
 spring:
+  profiles:
+    active: dev
+  # 特别注意 spring.applicatin.name即为 配置文件的名称　{application}-{profile}.yml会根据你配置的名称去找文件
   application:
-    name: config-client
+    name: xm-cloud
+  rabbitmq:
+      host: 192.168.1.199
+      port: 5672
+      username: root #guest
+      password: Qwer.1234 #guest
   cloud:
     config:
       label: master
-      profile: dev
+      profile: pro
       # 不走注册中心从配置服务端读取配置文件
       #uri: http://localhost:9531/
       discovery:
         service-id: config-server
-        # 是否从配置中心读取文件
+         #是否从配置中心读取文件
         enabled: true
-
 server:
   port: 9532
 

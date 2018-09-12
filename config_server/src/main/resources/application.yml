@@ -1,25 +1,37 @@
 server:
   port: 9531
 
-
 spring:
   application:
     name: config-server
+  rabbitmq:
+    host: 192.168.1.199
+    port: 5672
+    username: root #guest
+    password: Qwer.1234 #guest
   cloud:
     config:
+    #  label: master
       server:
         git:
-          uri: https://gitee.com/cjw.net/SpringCloudConfig/
-          # 目录
-          search-paths: /
+          uri: https://gitee.com/cjw.net/xm-cloud-config/
+          #uri: https://gitee.com/didispace/config-repo-demo/
+          # 配置仓库路径 –这里写成’{profile}’是为了能让后面的服务在不同环境下动态的去获得相对应的目录下的配置环境
+        #  search-paths: / #'{profile}'
 #          username: ****
 #          password: ****
-      label: master
-
+# 访问地址 http://192.168.1.101:9531/xm-cloud/dev/master
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:9527/eureka
+  instance:
+    status-page-url-path: /
+    #prefer-ip-address: true #将自己的ip地址注册到Eureka服务中
+    #ipAddress: 127.0.0.1
 
-
+# 屏蔽刷新配置安全验证
+management:
+  security:
+    enabled: false
 

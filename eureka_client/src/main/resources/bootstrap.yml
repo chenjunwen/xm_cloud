@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    config:
+      name: xm-cloud
+      label: master
+      profile: dev
+      # 不走注册中心从配置服务端读取配置文件
+      #uri: http://localhost:9531/
+      discovery:
+        service-id: config-server
+        # 是否从配置中心读取文件
+        enabled: true

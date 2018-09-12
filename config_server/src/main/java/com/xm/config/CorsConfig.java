@@ -10,7 +10,7 @@ import org.springframework.web.filter.CorsFilter;
  * 跨域
  * Created by Roy on 2017/5/31.
  */
-//@Configuration
+@Configuration
 public class CorsConfig {
     private CorsConfiguration buildConfig() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
