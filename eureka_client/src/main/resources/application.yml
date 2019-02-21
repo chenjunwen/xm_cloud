@@ -4,9 +4,52 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:9527/eureka
+      defaultZone: http://${security.user.name}:${security.user.password}@localhost:9527/eureka
     #从eureka服务器注册表中获取注册信息的时间间隔（s），默认为30秒
+  instance:
+    metadata-map:
+      user.name: ${security.user.name}
+      user.password: ${security.user.password}
 
 spring:
   application:
     name: eureka-client
+  boot:
+    admin:
+      #配置Admin Server的地址
+      url: http://localhost:9527/admin
+      username: ${security.user.name}
+      password: ${security.user.password}
+
+# 是否打开安全验证
+management:
+  security:
+    enabled: false
+  endpoints:
+    #通过 HTTP 实现一个 actuator 端点，它需要被启用并公开。默认：只有/health 和 /info 端点被公开
+    web:
+      exposure:
+        # 公 开所有的端点
+        include: "*"
+        exclude: env,beans # 公开除 env 端点之外的所有(已启用的) web 端点：
+        #host:port/shutdown，当需要停止服务时，向服务器post该请求即可
+        shutdown:
+          enabled: true
+    endpoint:
+      health:
+        show-details: ALWAYS
+
+
+# eureka注册和springbootadmin注册需要的密码
+security:
+  user:
+    name: admin
+    password: admin
+  basic:
+    enabled: false
+
+info:
+  name: "@project.name@" #从pom.xml中获取
+  description: "@project.description@"
+  version: "@project.version@"
+  parent: "@project.parent@"

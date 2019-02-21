@@ -5,7 +5,7 @@ import com.netflix.zuul.context.RequestContext;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
-@Component
+//@Component
 public class WebSocketFilter extends ZuulFilter {
     @Override
     public String filterType() {

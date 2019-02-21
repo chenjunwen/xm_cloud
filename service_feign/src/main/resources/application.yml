@@ -14,8 +14,24 @@ spring:
   application:
     name: service-feign
 
-
+# Feign中使用断路器，默认是false
 feign:
   hystrix:
     enabled: true
 
+
+#feign的默认请求超时时间是1s，所以经常会出现超时的问题，这里我设置的是10s。ribbon的请求时间也要设置，因为feign用的是ribbon。这里贴的是application.yml文件中的一小段
+ribbon:
+  ReadTimeout:  30000
+  ConnectTimeout:  15000
+hystrix:
+  command:
+    default:
+      execution:
+        # 是否启用超时时间
+        timeout:
+          enabled: true;
+        #Hystrix断路器的超时时间，默认是1s
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000

@@ -6,9 +6,8 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-
 import javax.servlet.http.HttpServletRequest;
-//@Component
+@Component
 public class MyFilter extends ZuulFilter {
     private static Logger log = LoggerFactory.getLogger(MyFilter.class);
 
@@ -58,7 +57,7 @@ public class MyFilter extends ZuulFilter {
             ctx.setSendZuulResponse(false);
             ctx.setResponseStatusCode(401);
             try {
-                ctx.getResponse().getWriter().write("token is blank");
+                ctx.getResponse().getWriter().write("token is blank 登录过期");
             }catch (Exception e){
                 log.error("获取writer失败");
             }

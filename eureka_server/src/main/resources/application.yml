@@ -5,13 +5,52 @@ eureka:
   instance:
     hostname: localhost
   client:
-    #false表示不向注册中心注册自己。
+    #false表示不向注册中心注册自己(关闭自己作为客户端注册)
     register-with-eureka: false
+    # 表示eureka client间隔多久去拉取服务注册信息
+    registry-fetch-interval-seconds: 5
     #false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
     fetch-registry: false
     #设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址（单机）
     service-url:
-      defalutZone: http://${eureka.instance.hostname}:${server.port}/eureka
-  # 关闭eureka自我保护机制
+      defalutZone: http://${security.user.name}:${security.user.password}@${eureka.instance.hostname}:${server.port}/eureka
+  # 打开eureka自我保护机制
   server:
-    enable-self-preservation: false
+    enable-self-preservation: true
+
+
+spring:
+  boot:
+    admin:
+      # 默认访问地址
+      context-path: /admin
+      notify:
+        mail:
+          to: 643969814@qq.com  #收件人邮箱
+          from: 363992831@qq.com  #发件人邮箱
+  mail:
+    host: smtp.qq.com  #(私人邮箱测试，企业邮箱和私人邮箱配置不同)
+    username: 363992831@qq.com #登录账号
+    password: fuvqdobcmytsbjfj  #密码(开启IMAP/SMTP服务颁发的授权码)
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+
+# eureka 权限认证
+security:
+  #打开security框架自带的登陆弹出框
+  basic:
+    enabled: true
+  user:
+    name: admin #用户名
+    password: admin #密码
+
+
+spring.mail.host: smtp.qq.com
+
+
